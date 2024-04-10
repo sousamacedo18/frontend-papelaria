@@ -1,6 +1,6 @@
 import React from "react";
 import '../../global.css'
-import logo from '../../assets/img/logo.avif'
+import logo from '../../assets/img/logo1.png'
 import {useNavigate} from 'react-router-dom'
 
 export default function Logon(){
@@ -14,6 +14,7 @@ export default function Logon(){
     <div className="logon-container">
         <section className="form">
            <img src={logo} width={200} />
+           <h1>Faça seu login</h1>
             <form onSubmit={logar}>
                 <input 
                 placeholder="E-mail"
