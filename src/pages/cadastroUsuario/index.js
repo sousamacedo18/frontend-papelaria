@@ -4,18 +4,34 @@ import Head from "../componentes/head"
 import '../../global.css'
 
 export default function Cadastrousuario(){
-  
-    const [nome,setNome] = useState("lua")
-    const [email,setEmail] = useState("sousamacedo18@gmail.com")
+ 
+    const [nome,setNome] = useState("")
+    const [email,setEmail] = useState("")
     const [senha,setSenha] = useState()
+
+
+    const usuario={
+        id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
+        nome,
+        email,
+        senha
+    };
+    const salvardados=(e)=>{
+      e.preventDefault();
+     const banco = JSON.parse(localStorage.getItem("usuarios")|| "[]")
+     banco.push(usuario)
+     localStorage.setItem("usuarios",
+     JSON.stringify(banco))
+    alert("Deu certo!!!!!")
+    }
     return(
         <div className="dashboard-container">
                 <div className="menu">
                     <Menu />
                 </div>
                 <div className="main">
-                    <Head />
-                    <form>
+                    <Head title="Cadastro de Usuário" />
+                    <form onSubmit={salvardados} > 
                         
                        <input 
                        type="text" 
@@ -36,10 +52,10 @@ export default function Cadastrousuario(){
                        value={senha}
                        onChange={(e)=>setSenha(e.target.value)}                     
                        />
-                       <button>
+                       <button className="btn-salvar">
                         Salvar
                        </button>
-                       {nome}
+                      
                     </form>
                 </div>
         </div>

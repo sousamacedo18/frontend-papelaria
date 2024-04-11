@@ -121,3 +121,22 @@ body{
        .icon-menu{
            padding-right: 20px;
        }
+       .btn-salvar{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 12px;
+        background-color: green;
+        border:0;
+        border-radius: 5px;
+        color:#FFF;
+        font-weight: 700;
+        text-align: center;
+        text-decoration:none;
+        font-size: 14px;
+        transition: filter 0.2s;
+    }
+    .btn-salvar:hover{
+        filter:brightness(90%);
+        cursor:pointer
+    }
