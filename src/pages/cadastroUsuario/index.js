@@ -1,10 +1,13 @@
 import { useState } from "react"
 import Menu from "../componentes/menu"
 import Head from "../componentes/head"
+import {useNavigate, Link} from "react-router-dom"
+
+
 import '../../global.css'
 
 export default function Cadastrousuario(){
- 
+    const navigate = useNavigate();
     const [nome,setNome] = useState("")
     const [email,setEmail] = useState("")
     const [senha,setSenha] = useState()
@@ -22,7 +25,8 @@ export default function Cadastrousuario(){
      banco.push(usuario)
      localStorage.setItem("usuarios",
      JSON.stringify(banco))
-    alert("Deu certo!!!!!")
+    alert("Dados Salvos com Sucesso!!!!!")
+    navigate("/listausuario")
     }
     return(
         <div className="dashboard-container">
@@ -31,6 +35,7 @@ export default function Cadastrousuario(){
                 </div>
                 <div className="main">
                     <Head title="Cadastro de Usuário" />
+    
                     <form onSubmit={salvardados} > 
                         
                        <input 
