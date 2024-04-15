@@ -2,10 +2,11 @@ import React,{useState,useEffect} from "react";
 import '../../global.css'
 import Head from "../componentes/head";
 import Menu from "../componentes/menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEdit,FiTrash } from "react-icons/fi";
 
 export default function Listausuarios(){
+const navigate = useNavigate();
 const [usuarios,setUsuarios] = useState([]);
 function mostrarusuarios(){
     const banco = JSON.parse(localStorage.getItem("usuarios")|| "[]")
@@ -13,8 +14,9 @@ function mostrarusuarios(){
 }
 function editarusuario(id){
  alert(`Estou editando usuário de id:${id}`)
+ navigate(`/editarusuario/${id}`)
 }
-function exluirusuario(id){
+function excluirusuario(id){
  alert(`Estou excluído usuário de id:${id}`)
 }
 useEffect(()=>{
@@ -51,7 +53,7 @@ useEffect(()=>{
                             <FiEdit size={24} color="blue" cursor="pointer" onClick={(e)=>{editarusuario(linha.id)}} />
                         </td>
                         <td>
-                            <FiTrash size={24} color="red" cursor="pointer" onClick={(e)=>{exluirusuario(linha.id)}}/>
+                            <FiTrash size={24} color="red" cursor="pointer" onClick={(e)=>{excluirusuario(linha.id)}}/>
                         </td>
                         </tr>
                      )
