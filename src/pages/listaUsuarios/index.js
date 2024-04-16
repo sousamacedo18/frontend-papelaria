@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from "react";
 import '../../global.css'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Head from "../componentes/head";
 import Menu from "../componentes/menu";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,9 +18,24 @@ function editarusuario(id){
  alert(`Estou editando usuário de id:${id}`)
  navigate(`/editarusuario/${id}`)
 }
-function excluirusuario(id){
- alert(`Estou excluído usuário de id:${id}`)
-}
+
+  const  excluirusuario = (id) => {
+        confirmAlert({
+          title: 'Excluir usuário',
+          message: 'Deseja realmente excluir esse usuário?',
+          buttons: [
+            {
+              label: 'Sim',
+              onClick: () => alert('Click Yes')
+            },
+            {
+              label: 'Não',
+              onClick: () => alert('Click No')
+            }
+          ]
+        });
+      };
+
 useEffect(()=>{
     mostrarusuarios()
 },[])
