@@ -26,11 +26,19 @@ function editarusuario(id){
           buttons: [
             {
               label: 'Sim',
-              onClick: () => alert('Click Yes')
+              onClick: () => {
+                const banco = JSON.parse(localStorage.getItem("usuarios")|| "[]")
+                const dadosvelhos = banco.filter(linha=>
+                  {
+                      return linha.id!=id
+                  }
+                  )
+                  localStorage.setItem("usuarios",JSON.stringify(dadosvelhos))
+              }
             },
             {
               label: 'Não',
-              onClick: () => alert('Click No')
+              onClick: () => alert('Ação cancelada!')
             }
           ]
         });
