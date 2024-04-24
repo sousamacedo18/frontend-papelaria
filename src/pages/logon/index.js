@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../global.css'
 import logo from '../../assets/img/logo1.png'
 import {useNavigate} from 'react-router-dom'
 
 export default function Logon(){
     const navigate = useNavigate();
+
+    const [email,setEmail] = useState();
+    const [senha,setSenha] = useState();
+    
+    const banco = JSON.parse(localStorage.getItem("usuarios")|| "[]")
+
     const logar=(e)=>{
       e.preventDefault()
-      navigate('/dashboard')
+      if(!email ||  !senha){
+            alert("Há campos vazios")
+      }else{
+        
+        const usuariologado=banco.filter(linha=>{
+            return linha.email===email && linha.senha==senha
+        })
+        if(usuariologado.length>0){
+            navigate('/dashboard')
+        }else{
+            alert("E-mail ou senha incorretos!")
+        }
+
+      }
 
     }
    return(
@@ -19,10 +38,16 @@ export default function Logon(){
                 <input 
                 placeholder="E-mail"
                 type="email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                
                 />
                 <input 
                 placeholder="Senha"
                 type="password"
+                value={senha}
+                onChange={(e)=>setSenha(e.target.value)}
+                               
                 />
                 <button className="button_login" type="submit">
                     Entrar
