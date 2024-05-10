@@ -20,6 +20,7 @@ export default function Logon(){
         const usuariologado=banco.filter(linha=>{
             return linha.email===email && linha.senha==senha
         })
+        console.log(usuariologado)
         if(usuariologado.length>0){
             navigate('/dashboard')
         }else{

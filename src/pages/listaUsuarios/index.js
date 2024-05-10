@@ -5,7 +5,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Head from "../componentes/head";
 import Menu from "../componentes/menu";
 import { Link, useNavigate } from "react-router-dom";
-import { FiEdit,FiTrash } from "react-icons/fi";
+import {FiEdit,FiTrash, FiAlignJustify } from "react-icons/fi";
 import Barrasuperior from "../componentes/barrasuperior";
 
 export default function Listausuarios(){
@@ -60,11 +60,9 @@ useEffect(()=>{
             <Menu />
         </div>
         <div className="main">
-            <Head title="Lista de Usuários" />
-            <div>
-
-                <Link to="/cadastrousuario" className='btn-novo'>Novo</Link>
-            </div>
+           <FiAlignJustify className="btn-menu"/>
+          <Head title="Lista de Usuários"  />
+          <Link to="/cadastrousuario" className='btn-novo'>Novo</Link> 
            <table>
             <tr>
              <th>ID</th>

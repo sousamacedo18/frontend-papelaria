@@ -3,11 +3,16 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Logon from './pages/logon'
 import Dashboard from './pages/dashboard'
 import Cadastrousuario from './pages/cadastroUsuario'
+import Cadastroproduto from './pages/cadastroProduto'
+import Cadastroentrada from './pages/cadastroEntrada'
 
 import Listausuarios from './pages/listaUsuarios'
 import Listaprodutos from './pages/listaProdutos'
+import Listaentrada from './pages/listaEntrada'
+import Listaestoques from './pages/listaEstoques'
 
 import Editarusuario from './pages/editarUsuario'
+import Editarproduto from './pages/editarProduto'
 
 export default function Rotas(){
     return(
@@ -16,9 +21,14 @@ export default function Rotas(){
         <Route path="/" exact element={<Logon />} />
         <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/cadastrousuario"  element={<Cadastrousuario />} />
-        <Route path="/listausuario"  element={<Listausuarios />} />
-        <Route path="/listaproduto"  element={<Listaprodutos />} />
+        <Route path="/cadastroproduto"  element={<Cadastroproduto />} />
+        <Route path="/cadastroentrada"  element={<Cadastroentrada />} />
+        <Route path="/listarusuarios"  element={<Listausuarios />} />
+        <Route path="/listarentradas"  element={<Listaentrada />} />
+        <Route path="/listarprodutos"  element={<Listaprodutos />} />
+        <Route path="/listarestoques"  element={<Listaestoques />} />
         <Route path="/editarusuario/:id"  element={<Editarusuario />} />
+        <Route path="/editarproduto/:id"  element={<Editarproduto />} />
 
 
         </Routes>

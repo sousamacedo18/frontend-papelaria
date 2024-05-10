@@ -2,6 +2,7 @@ import { useState } from "react"
 import Menu from "../componentes/menu"
 import Head from "../componentes/head"
 import {useNavigate, Link} from "react-router-dom"
+import Barrasuperior from "../componentes/barrasuperior";
 
 
 import '../../global.css'
@@ -26,10 +27,13 @@ export default function Cadastrousuario(){
      localStorage.setItem("usuarios",
      JSON.stringify(banco))
     alert("Dados Salvos com Sucesso!!!!!")
-    navigate("/listausuario")
+    navigate("/listarusuarios")
     }
     return(
         <div className="dashboard-container">
+    
+        <Barrasuperior />
+            <div className="header">  
                 <div className="menu">
                     <Menu />
                 </div>
@@ -64,5 +68,6 @@ export default function Cadastrousuario(){
                     </form>
                 </div>
         </div>
+    </div>
             )
 }

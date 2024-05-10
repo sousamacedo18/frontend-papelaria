@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Menu from "../componentes/menu"
 import Head from "../componentes/head"
 import {useNavigate,useParams, Link} from "react-router-dom"
-
+import Barrasuperior from "../componentes/barrasuperior";
 
 import '../../global.css'
 
@@ -67,6 +67,8 @@ export default function Editarusuario(){
     }
     return(
         <div className="dashboard-container">
+            <Barrasuperior />
+                <div className="header"> 
                 <div className="menu">
                     <Menu />
                 </div>
@@ -99,6 +101,7 @@ export default function Editarusuario(){
                        </button>
                       
                     </form>
+                </div>
                 </div>
         </div>
             )
