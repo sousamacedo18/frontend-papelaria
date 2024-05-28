@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import Menu from "../componentes/menu";
 import Head from "../componentes/head";
 import Barrasuperior from "../componentes/barrasuperior";
@@ -11,7 +11,8 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {FiAirplay } from "react-icons/fi";
 
-export default function CadastroEntrada() {
+export default function EditarEntrada() {
+    const {id} = useParams();
   const navigate = useNavigate();
   const [produtos, setProdutos] = useState([]);
   const [id_produto, setId_Produto] = useState("");
@@ -23,8 +24,17 @@ export default function CadastroEntrada() {
   useEffect(() => {
     const banco = JSON.parse(localStorage.getItem("produtos") || "[]");
     setProdutos(banco);
+    exibirdados();
   }, []);
-
+  const exibirdados = () => {
+    const banco = JSON.parse(localStorage.getItem("entradas") || "[]");
+    banco.filter(linha => linha.id === id).map(value => {
+        setId_Produto(value.id_produto);
+        setQTDE(value.qtde);
+        setValor_Unitario(value.valor_unitario);
+        setData_entrada(value.data_entrada);
+    });
+};
   const salvarDados = (e) => {
     e.preventDefault();
     if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
@@ -33,11 +43,9 @@ export default function CadastroEntrada() {
       const index = Array.prototype.indexOf.call(form, e.target);
       form.elements[index + 1].focus();
     }
-    const estoques = JSON.parse(localStorage.getItem("estoques") || "[]");
-    console.log(typeof estoques)
+   
     //iniciando para atualizar entrada
     const entrada = {
-      id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
       id_produto,
       qtde,
       valor_unitario,
@@ -48,7 +56,7 @@ export default function CadastroEntrada() {
   //filtrando o produto no estoque
 
     // Se 'estoques' for um array, continue com o código para filtrá-lo.
-    console.log("estou no primeiro filter")
+
     const produtoexiste = estoques.filter((linha) =>{
      return linha.id_produto === id_produto
     } );

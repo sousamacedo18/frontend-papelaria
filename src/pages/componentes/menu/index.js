@@ -12,7 +12,7 @@ export default function Menu(){
             <Link to="/listarprodutos" className='link'><FiTag className='icons-menu' size={24}/>Produto</Link>
             <Link to="/listarentradas" className='link'><FiShoppingCart className='icons-menu' size={24}/>Entrada</Link>
             <Link to="/listarestoques" className='link'><FiGrid className='icons-menu' size={24}/>Estoque</Link>
-            <Link to="listarsaidas" className='link'><FiTruck className='icons-menu' size={24}/>Saída</Link>
+            <Link to="/listarsaidas" className='link'><FiTruck className='icons-menu' size={24}/>Saída</Link>
 
             </nav>
         </div>

@@ -3,8 +3,8 @@ import Menu from "../componentes/menu"
 import Head from "../componentes/head"
 import {useNavigate, Link} from "react-router-dom"
 import Barrasuperior from "../componentes/barrasuperior";
-
-
+import QrReader from 'react-qr-scanner'
+import { Html5Qrcode } from "html5-qrcode";
 import '../../global.css'
 
 export default function Cadastrousuario(){
@@ -13,7 +13,10 @@ export default function Cadastrousuario(){
     const [descricao,setDescricao] = useState("")
     const [estoque_minimo,setEstoque_minimo] = useState()
     const [estoque_maximo,setEstoque_maximo] = useState()
+    const [data, setData] = useState('No result');
 
+
+   
 
     const produto={
         id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
@@ -33,6 +36,7 @@ export default function Cadastrousuario(){
     navigate("/listarprodutos")
     }
     return(
+     
         <div className="dashboard-container">
     
         <Barrasuperior />
@@ -42,7 +46,21 @@ export default function Cadastrousuario(){
                 </div>
                 <div className="main">
                     <Head title="Cadastro de Produtos" />
-    
+                    <>
+                            <QrReader
+                                onResult={(result, error) => {
+                                if (!!result) {
+                                    setData(result?.text);
+                                }
+
+                                if (!!error) {
+                                    console.info(error);
+                                }
+                                }}
+                                style={{ width: '100%' }}
+                            />
+                            <p>{data}</p>
+                    </>
                     <form onSubmit={salvardados} > 
                         
                        <select onChange={(e)=>{setStatus(e.target.value)}}>
